@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<title>A+ Health Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="authpage">
+
+<div class="auth-wrap">
+
+  <div class="auth-brand">
+    <svg width="40" height="40" viewBox="0 0 512 512">
+      <rect width="512" height="512" rx="110" fill="#131B3A"/>
+      <text x="256" y="300" font-family="Georgia, serif" font-size="230" font-weight="400" fill="#FFFFFF" text-anchor="middle" font-style="italic">A</text>
+      <path d="M340 190 v50 M315 215 h50" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round"/>
+    </svg>
+    <p class="eyebrow">A+ HEALTH SERVICES</p>
+  </div>
+
+  <div class="auth-toggle">
+    <button type="button" class="toggle-option active" data-mode="login">Log In</button>
+    <button type="button" class="toggle-option" data-mode="signup">Sign Up</button>
+  </div>
+
+  <form id="authForm" class="auth-form">
+    <div id="nameField" style="display:none;">
+      <label>Full Name</label>
+      <input type="text" id="nameInput" placeholder="Your full name">
+    </div>
+
+    <label>Email</label>
+    <input type="email" id="emailInput" placeholder="you@example.com" required>
+
+    <label>Password</label>
+    <input type="password" id="passwordInput" placeholder="••••••••" required>
+
+    <p class="auth-error" id="authError" style="display:none;"></p>
+
+    <button type="submit" class="btn-primary full-width" id="authSubmit">Log In</button>
+  </form>
+
+  <p class="auth-footnote">By continuing you agree this is a demo build — no real data is transmitted.</p>
+
+</div>
+
+<script src="login.js"></script>
+</body>
+</html>

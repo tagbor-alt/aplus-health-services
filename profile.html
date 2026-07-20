@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<title>My Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="profilepage">
+
+<script src="theme.js"></script>
+<script src="lang.js"></script>
+
+<header class="chat-header">
+  <a href="home.html" class="back">←</a>
+  <div>
+    <h1 id="userName">My Profile</h1>
+    <p class="tagline" id="userEmail">Health profile & account</p>
+  </div>
+</header>
+
+<main class="profile-main">
+
+  <section class="b-section">
+    <p class="eyebrow">AGE</p>
+    <input type="number" id="ageInput" placeholder="e.g. 34">
+  </section>
+
+  <section class="b-section">
+    <p class="eyebrow">HEALTH GOALS</p>
+    <textarea id="goalsInput" placeholder="e.g. Manage lower back pain, improve mobility..."></textarea>
+  </section>
+
+  <section class="b-section">
+    <p class="eyebrow">EXISTING CONDITIONS</p>
+    <textarea id="conditionsInput" placeholder="e.g. Hypertension, previous knee injury..."></textarea>
+  </section>
+
+  <section class="b-section">
+    <p class="eyebrow">EMERGENCY CONTACT</p>
+    <div class="field-group">
+      <input type="text" id="ecNameInput" placeholder="Name">
+      <input type="tel" id="ecPhoneInput" placeholder="Phone number">
+    </div>
+  </section>
+
+  <button id="saveProfileBtn" class="btn-primary full-width">Save Profile</button>
+  <p class="save-note" id="saveNote" style="display:none;">Profile saved.</p>
+
+  <button id="logoutBtn" class="logout-btn">Log Out</button>
+
+  <section class="b-section">
+    <p class="eyebrow">THEME</p>
+    <div class="theme-row" id="themeRow">
+      <div class="theme-swatch" data-theme="navy" style="background:#131B3A;"></div>
+      <div class="theme-swatch" data-theme="forest" style="background:#1F5C4F;"></div>
+      <div class="theme-swatch" data-theme="coral" style="background:#A13D2F;"></div>
+      <div class="theme-swatch" data-theme="plum" style="background:#4B2E58;"></div>
+    </div>
+  </section>
+
+  <section class="b-section">
+    <p class="eyebrow">LANGUAGE</p>
+    <div class="lang-row" id="langRow">
+      <button class="lang-opt" data-lang="en">English</button>
+      <button class="lang-opt" data-lang="tw">Twi</button>
+      <button class="lang-opt" data-lang="ga">Ga</button>
+    </div>
+  </section>
+
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="profile.js"></script>
+</body>
+</html>

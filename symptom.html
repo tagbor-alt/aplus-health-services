@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<title>Symptom Checker</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="symptompage">
+
+<header class="chat-header">
+  <a href="home.html" class="back">←</a>
+  <div>
+    <h1>Symptom Checker</h1>
+    <p class="tagline">A few quick questions to guide you</p>
+  </div>
+</header>
+
+<main class="symptom-main">
+
+  <section class="sym-step active" id="step1">
+    <p class="eyebrow">STEP 1 OF 3</p>
+    <h2>What's mainly bothering you?</h2>
+    <div class="sym-options" id="q1Options">
+      <button class="sym-opt" data-val="pain">Pain, stiffness, or an injury</button>
+      <button class="sym-opt" data-val="breathing">Breathing or chest discomfort</button>
+      <button class="sym-opt" data-val="mood">Stress, low mood, or anxiety</button>
+      <button class="sym-opt" data-val="diet">Weight, diet, or eating habits</button>
+      <button class="sym-opt" data-val="daily">Difficulty with daily tasks or activities</button>
+    </div>
+  </section>
+
+  <section class="sym-step" id="step2">
+    <p class="eyebrow">STEP 2 OF 3</p>
+    <h2>How long has this been going on?</h2>
+    <div class="sym-options" id="q2Options">
+      <button class="sym-opt" data-val="new">Just started (today or this week)</button>
+      <button class="sym-opt" data-val="weeks">A few weeks</button>
+      <button class="sym-opt" data-val="months">Months or longer</button>
+    </div>
+  </section>
+
+  <section class="sym-step" id="step3">
+    <p class="eyebrow">STEP 3 OF 3</p>
+    <h2>How much is it affecting your daily life?</h2>
+    <div class="sym-options" id="q3Options">
+      <button class="sym-opt" data-val="mild">Mild — barely noticeable</button>
+      <button class="sym-opt" data-val="moderate">Moderate — I notice it often</button>
+      <button class="sym-opt" data-val="severe">Severe — it's hard to function</button>
+    </div>
+  </section>
+
+  <section class="sym-step" id="resultStep">
+    <p class="eyebrow">SUGGESTED NEXT STEP</p>
+    <div class="sym-result" id="resultCard"></div>
+    <button class="btn-text" id="restartBtn" style="margin-top:16px;">Start over</button>
+  </section>
+
+</main>
+
+<script src="symptom.js"></script>
+</body>
+</html>1

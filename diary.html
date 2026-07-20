@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<title>Health Diary</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="diarypage">
+
+<header class="chat-header">
+  <a href="home.html" class="back">←</a>
+  <div>
+    <h1>Health Diary</h1>
+    <p class="tagline">Track pain, mood, and exercise</p>
+  </div>
+</header>
+
+<main class="diary-main">
+
+  <section class="b-section">
+    <p class="eyebrow">PAIN LEVEL (0–10)</p>
+    <input type="range" id="painRange" min="0" max="10" value="0">
+    <div class="range-value" id="painValue">0</div>
+  </section>
+
+  <section class="b-section">
+    <p class="eyebrow">MOOD</p>
+    <div class="mood-row" id="moodRow">
+      <button type="button" class="mood-btn" data-mood="Great">🙂</button>
+      <button type="button" class="mood-btn" data-mood="Okay">😐</button>
+      <button type="button" class="mood-btn" data-mood="Low">🙁</button>
+      <button type="button" class="mood-btn" data-mood="Stressed">😣</button>
+    </div>
+  </section>
+
+  <section class="b-section">
+    <p class="eyebrow">EXERCISE TODAY</p>
+    <input type="text" id="exerciseInput" placeholder="e.g. 20 min walk, stretching...">
+  </section>
+
+  <section class="b-section">
+    <p class="eyebrow">NOTES (OPTIONAL)</p>
+    <textarea id="notesInput" placeholder="Anything else worth noting?"></textarea>
+  </section>
+
+  <button id="saveEntryBtn" class="btn-primary full-width">Save Entry</button>
+
+  <section class="b-section" style="margin-top:36px;">
+    <p class="eyebrow">PAST ENTRIES</p>
+    <div id="entryList" class="entry-list"></div>
+  </section>
+
+</main>
+
+<script src="diary.js"></script>
+</body>
+</html>

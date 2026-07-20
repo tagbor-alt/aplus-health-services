@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<title>Book an Appointment</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="bookingpage">
+
+<header class="chat-header">
+  <a href="home.html" class="back">←</a>
+  <div>
+    <h1 id="serviceTitle">Book an Appointment</h1>
+    <p class="tagline">Choose a professional, time, and visit type</p>
+  </div>
+</header>
+
+<main class="booking-main">
+
+  <section class="b-section">
+    <p class="eyebrow">CHOOSE A PROFESSIONAL</p>
+    <div id="profList" class="prof-list"></div>
+  </section>
+
+  <section class="b-section">
+    <p class="eyebrow">DATE & TIME</p>
+    <div class="field-group">
+      <input type="date" id="apptDate">
+      <input type="time" id="apptTime">
+    </div>
+  </section>
+
+  <section class="b-section">
+    <p class="eyebrow">VISIT TYPE</p>
+    <div class="visit-toggle" id="visitToggle">
+      <button type="button" class="toggle-option active" data-type="Online">Online</button>
+      <button type="button" class="toggle-option" data-type="In-person">In-person</button>
+      <button type="button" class="toggle-option" data-type="Home visit">Home visit</button>
+    </div>
+  </section>
+
+  <div id="confirmSummary" class="confirm-summary" style="display:none;"></div>
+
+  <button id="confirmBtn" class="btn-primary full-width">Confirm Booking</button>
+
+</main>
+
+<script src="booking.js"></script>
+</body>
+</html>&

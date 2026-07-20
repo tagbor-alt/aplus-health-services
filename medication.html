@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<title>Medication Reminders</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="medpage">
+
+<script src="theme.js"></script>
+
+<header class="chat-header">
+  <a href="home.html" class="back">←</a>
+  <div>
+    <h1>Medication Reminders</h1>
+    <p class="tagline">Never miss a dose</p>
+  </div>
+</header>
+
+<main class="med-main">
+
+  <section class="b-section">
+    <p class="eyebrow">MEDICATION NAME</p>
+    <input type="text" id="medName" placeholder="e.g. Amlodipine">
+  </section>
+
+  <section class="b-section">
+    <p class="eyebrow">DOSAGE (OPTIONAL)</p>
+    <input type="text" id="medDosage" placeholder="e.g. 5mg, 1 tablet">
+  </section>
+
+  <section class="b-section">
+    <p class="eyebrow">TIME(S) PER DAY</p>
+    <div id="timeList" class="time-list"></div>
+    <button type="button" id="addTimeBtn" class="btn-text" style="margin-top:8px;">+ Add another time</button>
+  </section>
+
+  <button id="saveMedBtn" class="btn-primary full-width">Save Medication</button>
+
+  <section class="b-section" style="margin-top:36px;">
+    <p class="eyebrow">YOUR MEDICATIONS</p>
+    <div id="medList" class="entry-list"></div>
+  </section>
+
+</main>
+
+<script src="medication.js"></script>
+</body>
+</html>

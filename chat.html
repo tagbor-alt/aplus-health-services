@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<title>AI Health Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="chatpage">
+
+<header class="chat-header">
+  <a href="home.html" class="back">←</a>
+  <div>
+    <h1>AI Health Hub</h1>
+    <p class="tagline">Guidance and tracking support</p>
+  </div>
+</header>
+
+<div class="disclaimer">
+  This is general guidance, not a diagnosis. If symptoms are severe or persist, book a professional. For emergencies, seek immediate medical care.
+</div>
+
+<main class="chat-window" id="chatWindow">
+  <div class="msg ai">
+    <p>Hi, I'm your Health Hub assistant. Tell me what's going on — pain, posture, stress, breathing, or anything else — and I'll point you in the right direction.</p>
+  </div>
+</main>
+
+<form class="chat-input" id="chatForm">
+  <input type="text" id="chatInput" placeholder="Type your question..." autocomplete="off">
+  <button type="submit">Send</button>
+</form>
+
+<script src="chat.js"></script>
+</body>
+</html>

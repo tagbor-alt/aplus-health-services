@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<title>Provider Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="providerpage">
+
+<script src="theme.js"></script>
+
+<header class="chat-header">
+  <a href="index.html" class="back">←</a>
+  <div class="provider-avatar" id="avatarWrap">
+    <img id="avatarImg" src="" style="display:none;">
+    <span id="avatarInitial">A</span>
+  </div>
+  <div>
+    <h1 id="providerName">Dr. Ama Boateng</h1>
+    <p class="tagline">Physiotherapy</p>
+  </div>
+</header>
+
+<nav class="tab-row" id="tabRow">
+  <button class="tab-btn active" data-tab="appointments">Appointments</button>
+  <button class="tab-btn" data-tab="clients">Clients</button>
+  <button class="tab-btn" data-tab="assessments">Assessments</button>
+  <button class="tab-btn" data-tab="notes">Notes</button>
+  <button class="tab-btn" data-tab="availability">Availability</button>
+  <button class="tab-btn" data-tab="profile">Profile</button>
+</nav>
+
+<main class="provider-main">
+
+  <section class="tab-panel" id="panel-appointments">
+    <p class="eyebrow">TODAY'S APPOINTMENTS</p>
+    <div id="apptList" class="entry-list"></div>
+  </section>
+
+  <section class="tab-panel" id="panel-clients" style="display:none;">
+    <p class="eyebrow">CLIENTS</p>
+    <div id="clientList" class="prof-list"></div>
+  </section>
+
+  <section class="tab-panel" id="panel-assessments" style="display:none;">
+    <p class="eyebrow">NEW ASSESSMENT</p>
+
+    <select id="assessClientSelect"></select>
+
+    <select id="assessTypeSelect" style="margin-top:10px;">
+      <option value="initial">Initial Assessment</option>
+      <option value="pain">Pain Assessment</option>
+      <option value="rom">Range of Motion (ROM)</option>
+      <option value="mobility">Functional Mobility</option>
+    </select>
+
+    <div id="assessFormFields" class="assess-fields"></div>
+
+    <button id="saveAssessBtn" class="btn-primary full-width">Save Assessment</button>
+
+    <p class="eyebrow" style="margin-top:24px;">PAST ASSESSMENTS</p>
+    <div id="assessList" class="entry-list"></div>
+  </section>
+
+  <section class="tab-panel" id="panel-notes" style="display:none;">
+    <p class="eyebrow">NEW TREATMENT NOTE</p>
+    <select id="noteClientSelect"></select>
+    <textarea id="noteText" placeholder="Session summary, progress, home program given..."></textarea>
+    <button id="saveNoteBtn" class="btn-primary full-width">Save Note</button>
+
+    <p class="eyebrow" style="margin-top:24px;">PAST NOTES</p>
+    <div id="notesList" class="entry-list"></div>
+  </section>
+
+  <section class="tab-panel" id="panel-availability" style="display:none;">
+    <p class="eyebrow">AVAILABLE DAYS</p>
+    <div class="visit-toggle" id="dayToggle">
+      <button type="button" class="toggle-option day-opt" data-day="Mon">Mon</button>
+      <button type="button" class="toggle-option day-opt" data-day="Tue">Tue</button>
+      <button type="button" class="toggle-option day-opt" data-day="Wed">Wed</button>
+      <button type="button" class="toggle-option day-opt" data-day="Thu">Thu</button>
+      <button type="button" class="toggle-option day-opt" data-day="Fri">Fri</button>
+    </div>
+    <p class="eyebrow" style="margin-top:20px;">WORKING HOURS</p>
+    <div class="field-group">
+      <input type="time" id="startTime">
+      <input type="time" id="endTime">
+    </div>
+    <button id="saveAvailBtn" class="btn-primary full-width" style="margin-top:20px;">Save Availability</button>
+  </section>
+
+  <section class="tab-panel" id="panel-profile" style="display:none;">
+    <p class="eyebrow">PROFILE PHOTO</p>
+    <div class="photo-upload-row">
+      <div class="photo-preview" id="photoPreview">
+        <span id="photoPlaceholder">No photo</span>
+        <img id="photoPreviewImg" style="display:none;">
+      </div>
+      <label class="btn-primary photo-upload-btn">
+        Choose Photo
+        <input type="file" id="photoInput" accept="image/*" style="display:none;">
+      </label>
+    </div>
+
+    <p class="eyebrow" style="margin-top:24px;">FULL NAME</p>
+    <input type="text" id="providerNameInput" placeholder="Dr. Ama Boateng">
+
+    <p class="eyebrow" style="margin-top:20px;">SPECIALTY</p>
+    <input type="text" id="providerSpecialtyInput" placeholder="Physiotherapy">
+
+    <p class="eyebrow" style="margin-top:20px;">SHORT BIO</p>
+    <textarea id="providerBioInput" placeholder="A short intro clients will see..."></textarea>
+
+    <button id="saveProfileBtn2" class="btn-primary full-width" style="margin-top:20px;">Save Profile</button>
+  </section>
+
+</main>
+
+<script src="provider.js"></script>
+</body>
+</html>
