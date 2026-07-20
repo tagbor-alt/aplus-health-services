@@ -1,0 +1,17 @@
+{
+  "name": "A+ Health Services",
+  "short_name": "A+ Health",
+  "description": "Connecting you to the right care, anytime.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#EEF1F6",
+  "theme_color": "#131B3A",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
