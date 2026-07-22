@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#131B3A">
+<title>Nearby Providers</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="nearbypage">
+
+<script src="theme.js"></script>
+<script src="pwa-register.js"></script>
+
+<header class="chat-header">
+  <a href="home.html" class="back">←</a>
+  <div>
+    <h1>Nearby Providers</h1>
+    <p class="tagline">Find care close to you</p>
+  </div>
+</header>
+
+<div id="map"></div>
+
+<main class="nearby-list" id="providerListWrap">
+  <p class="eyebrow">CLOSEST TO YOU</p>
+  <div id="nearbyList" class="entry-list"></div>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="nearby.js"></script>
+</body>
+</html>

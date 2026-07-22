@@ -4,11 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#131B3A">
 <title>A+ Health Services</title>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="authpage">
+
+<script src="theme.js"></script>
+<script src="pwa-register.js"></script>
 
 <div class="auth-wrap">
 
@@ -43,10 +48,14 @@
     <button type="submit" class="btn-primary full-width" id="authSubmit">Log In</button>
   </form>
 
-  <p class="auth-footnote">By continuing you agree this is a demo build — no real data is transmitted.</p>
+  <p class="auth-footnote">Your account is stored securely with Firebase.</p>
 
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
 <script src="login.js"></script>
 </body>
 </html>

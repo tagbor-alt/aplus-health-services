@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#131B3A">
 <title>My Profile</title>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -12,6 +14,7 @@
 
 <script src="theme.js"></script>
 <script src="lang.js"></script>
+<script src="pwa-register.js"></script>
 
 <header class="chat-header">
   <a href="home.html" class="back">←</a>
@@ -43,6 +46,19 @@
     <div class="field-group">
       <input type="text" id="ecNameInput" placeholder="Name">
       <input type="tel" id="ecPhoneInput" placeholder="Phone number">
+    </div>
+  </section>
+
+  <section class="b-section">
+    <p class="eyebrow">PEOPLE I CARE FOR</p>
+    <div id="dependentList" class="entry-list"></div>
+
+    <div class="dependent-form" id="dependentForm">
+      <input type="text" id="depName" placeholder="Full name">
+      <input type="number" id="depAge" placeholder="Age">
+      <input type="text" id="depRelation" placeholder="Relationship (e.g. Mother, Son)">
+      <textarea id="depConditions" placeholder="Health conditions (optional)"></textarea>
+      <button type="button" id="addDependentBtn" class="btn-primary full-width">Add Dependent</button>
     </div>
   </section>
 

@@ -13,61 +13,70 @@ document.querySelectorAll(".mood-btn").forEach(btn => {
   });
 });
 
-function getEntries() {
-  try {
-    return JSON.parse(localStorage.getItem("healthDiaryEntries")) || [];
-  } catch {
-    return [];
-  }
-}
+let currentUid = null;
 
-function saveEntries(entries) {
-  localStorage.setItem("healthDiaryEntries", JSON.stringify(entries));
-}
-
-function renderEntries() {
-  const list = document.getElementById("entryList");
-  const entries = getEntries();
-
-  if (entries.length === 0) {
-    list.innerHTML = `<p class="empty-state">No entries yet. Save your first one above.</p>`;
+auth.onAuthStateChanged(user => {
+  if (!user) {
+    window.location.href = "login.html";
     return;
   }
-
-  list.innerHTML = entries.slice().reverse().map(e => `
-    <div class="entry-card">
-      <div class="entry-top">
-        <span class="entry-date">${e.date}</span>
-        <span class="entry-pain">Pain ${e.pain}/10</span>
-      </div>
-      <p class="entry-mood">Mood: ${e.mood || "Not set"}</p>
-      ${e.exercise ? `<p class="entry-exercise">Exercise: ${e.exercise}</p>` : ""}
-      ${e.notes ? `<p class="entry-notes">${e.notes}</p>` : ""}
-    </div>
-  `).join("");
-}
-
-document.getElementById("saveEntryBtn").addEventListener("click", () => {
-  const entry = {
-    date: new Date().toLocaleString(),
-    pain: painRange.value,
-    mood: selectedMood,
-    exercise: document.getElementById("exerciseInput").value.trim(),
-    notes: document.getElementById("notesInput").value.trim()
-  };
-
-  const entries = getEntries();
-  entries.push(entry);
-  saveEntries(entries);
-
-  painRange.value = 0;
-  painValue.textContent = "0";
-  document.querySelectorAll(".mood-btn").forEach(b => b.classList.remove("active"));
-  selectedMood = null;
-  document.getElementById("exerciseInput").value = "";
-  document.getElementById("notesInput").value = "";
-
+  currentUid = user.uid;
   renderEntries();
 });
 
-renderEntries();
+function renderEntries() {
+  const list = document.getElementById("entryList");
+  db.collection("diaryEntries")
+    .where("uid", "==", currentUid)
+    .orderBy("createdAt", "desc")
+    .get()
+    .then(snapshot => {
+      if (snapshot.empty) {
+        list.innerHTML = `<p class="empty-state">No entries yet. Save your first one above.</p>`;
+        return;
+      }
+      list.innerHTML = snapshot.docs.map(doc => {
+        const e = doc.data();
+        const date = e.createdAt ? e.createdAt.toDate().toLocaleString() : "Just now";
+        return `
+          <div class="entry-card">
+            <div class="entry-top">
+              <span class="entry-date">${date}</span>
+              <span class="entry-pain">Pain ${e.pain}/10</span>
+            </div>
+            <p class="entry-mood">Mood: ${e.mood || "Not set"}</p>
+            ${e.exercise ? `<p class="entry-exercise">Exercise: ${e.exercise}</p>` : ""}
+            ${e.notes ? `<p class="entry-notes">${e.notes}</p>` : ""}
+          </div>
+        `;
+      }).join("");
+    })
+    .catch(err => {
+      if (err.message.includes("index")) {
+        alert("Firestore needs an index for this — check the error link in your browser console and click it to auto-create it.");
+      }
+    });
+}
+
+document.getElementById("saveEntryBtn").addEventListener("click", () => {
+  if (!currentUid) return;
+
+  const entry = {
+    uid: currentUid,
+    pain: painRange.value,
+    mood: selectedMood,
+    exercise: document.getElementById("exerciseInput").value.trim(),
+    notes: document.getElementById("notesInput").value.trim(),
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  };
+
+  db.collection("diaryEntries").add(entry).then(() => {
+    painRange.value = 0;
+    painValue.textContent = "0";
+    document.querySelectorAll(".mood-btn").forEach(b => b.classList.remove("active"));
+    selectedMood = null;
+    document.getElementById("exerciseInput").value = "";
+    document.getElementById("notesInput").value = "";
+    renderEntries();
+  });
+});

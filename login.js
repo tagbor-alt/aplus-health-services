@@ -21,55 +21,42 @@ document.querySelectorAll(".toggle-option").forEach(btn => {
   });
 });
 
-function getUsers() {
-  try {
-    return JSON.parse(localStorage.getItem("appUsers")) || [];
-  } catch (err) {
-    alert("Storage error: " + err.message);
-    return [];
-  }
-}
-
-function saveUsers(users) {
-  try {
-    localStorage.setItem("appUsers", JSON.stringify(users));
-  } catch (err) {
-    alert("Could not save: " + err.message);
-  }
-}
-
 document.getElementById("authForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
-  try {
-    const email = document.getElementById("emailInput").value.trim();
-    const password = document.getElementById("passwordInput").value;
-    const name = document.getElementById("nameInput").value.trim();
-    const users = getUsers();
+  const email = document.getElementById("emailInput").value.trim();
+  const password = document.getElementById("passwordInput").value;
+  const name = document.getElementById("nameInput").value.trim();
 
-    authError.style.display = "none";
+  authError.style.display = "none";
+  authSubmit.disabled = true;
 
-    if (mode === "signup") {
-      if (users.find(u => u.email === email)) {
-        authError.textContent = "An account with this email already exists.";
+  if (mode === "signup") {
+    auth.createUserWithEmailAndPassword(email, password)
+      .then(cred => {
+        return db.collection("users").doc(cred.user.uid).set({
+          name: name,
+          email: email,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+      })
+      .then(() => {
+        window.location.href = "home.html";
+      })
+      .catch(err => {
+        authError.textContent = err.message;
         authError.style.display = "block";
-        return;
-      }
-      users.push({ name, email, password });
-      saveUsers(users);
-      localStorage.setItem("currentUser", JSON.stringify({ name, email }));
-      window.location.href = "home.html";
-    } else {
-      const user = users.find(u => u.email === email && u.password === password);
-      if (!user) {
-        authError.textContent = "Incorrect email or password.";
+        authSubmit.disabled = false;
+      });
+  } else {
+    auth.signInWithEmailAndPassword(email, password)
+      .then(() => {
+        window.location.href = "home.html";
+      })
+      .catch(err => {
+        authError.textContent = err.message;
         authError.style.display = "block";
-        return;
-      }
-      localStorage.setItem("currentUser", JSON.stringify({ name: user.name, email: user.email }));
-      window.location.href = "home.html";
-    }
-  } catch (err) {
-    alert("Something went wrong: " + err.message);
+        authSubmit.disabled = false;
+      });
   }
 });
